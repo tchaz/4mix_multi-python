@@ -60,6 +60,12 @@ if you ran that and have python 3(.4) on your machine you should be good to go.
   direct imported into a spreadsheet.
 
 
+4. If you run get_mix() without passing it arguments it will run 
+
+   get_mix('K8avg.csv', 'target.csv', 'Bashkir', 'PPNB', 'Central_Greek', 'Corded_Ware_LN', 'results_') 
+   
+   - an arbitary default used during testing.
+
 * NOTE ON THE INPUT FILE - The input file must be comma delimited,
   have one header row with the admixture component names, and have
   only one column of labels with the population and/or individual
@@ -71,8 +77,3 @@ if you ran that and have python 3(.4) on your machine you should be good to go.
   and subsequent lines.
 
 
-4. If you run get_mix() without passing it arguments it will run 
-
-   get_mix('K8avg.csv', 'target.csv', 'Bashkir', 'PPNB', 'Central_Greek', 'Corded_Ware_LN', 'results_') 
-   
-   - an arbitary default used during testing.
