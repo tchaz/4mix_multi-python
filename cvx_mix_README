@@ -1,0 +1,52 @@
+cvx_mix in python 3.
+
+Credits: tchaz 10/4/2016
+
+Quick instructions for cvx_mix.py:
+
+Cliff notes: syntax for cvx_mix() is similar to the original 4mix_multi.R - but there are a few more parameters. 
+If you have python 3(.4) on your machine you should be good to go ONCE you have installed cvxpy.
+
+Installation of cvxpy: If you are lucky to installation instructions at http://www.cvxpy.org/en/latest/install/ may work for you.
+I had to resort to getting the whl files for cvxpy and cvxCANNON from  Christoph Gohlke's site http://www.lfd.uci.edu/~gohlke/pythonlibs/
+
+
+1. Make sure you are in the directory with the cvx_mix.py file (or edit the file to change the default working directory).
+   Make sure you have write privileges for that directory (ie that you can create a file there) in order to be able to write the results file.
+   Run the script cvx_mix.py under python 3. (Tested under python 3.4.)
+   
+2. To run the script, there are seven possible arguments - all are optional and you'll probably only want to use the first two
+   which tell the function which source data and target data files to use. You write:
+   
+   > def cvx_mix(data_file, target_file, result_file_prefix, dec_pl, distances, norm, solver, verbose)
+   
+   where
+   
+   * data_file is the name of the source input file (file CSV format)
+   * target_file is the name of the target file (file CSV format)
+   * results_file_prefix is an optional name for a prefix for your results file
+   * dec_pl is a positive integer number (or 0) for the number of decimal places you want for the results that will be saved
+   * distances is either True (default) or False: whether or not to include in the results the distance between the target vector and the weighted collection of source vectors (raised to the norm-th power - see next item). 
+   * norm is a real number >= 1  - the norm the function will use. The default is Euclidean (i.e. norm = 2), no need to specify it if you are happy with Euclidean. Playing with this didn't seem that helpful to me, but it was cost-free to implement.
+   * solver is the type of cvx solver the function will use - you can see the instructions at cvxpy.org if you want to play with this
+   * verbose is either False (default) or True -  True will get you more feedback from the solver - again details at cvxpy.org 
+   
+   Examples:
+   
+   cvx_mix('C:/mydir/source.csv', 'C:/mydir/target.csv'
+   cvx_mix(data_file = working_dir + 'source.csv', target_file = working_dir + 'target.csv', result_file_prefix = working_dir + 'results_', dec_pl = 3, distances = True, norm = 2, solver='ECOS', verbose = False)
+
+3.  The input file, and target file can be directly created from spreadsheets 
+  saved in CSV format, and the output file which is in CSV format can be 
+  direct imported into a spreadsheet.
+
+* NOTE ON THE INPUT FILE - The input file must be comma delimited,
+  have one header row with the admixture component names, and have
+  only one column of labels with the population and/or individual
+  IDs.
+
+* NOTE ON THE TARGET FILE - The format of the target file must be
+  comma delimited, have admixture population headers, and have the
+  target name to the left of the admixture values on the second
+  and subsequent lines.
+
