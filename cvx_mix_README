@@ -22,21 +22,21 @@ I had to resort to getting the whl files for cvxpy and cvxCANNON from  Christoph
    
    where
    
-   * data_file is the name of the source input file (file CSV format)
-   * target_file is the name of the target file (file CSV format)
-   * results_file_prefix is an optional name for a prefix for your results file
-   * dec_pl is a positive integer number (or 0) for the number of decimal places you want for the results that will be saved
-   * distances is either True (default) or False: whether or not to include in the results the distance between the target vector and the weighted collection of source vectors (raised to the norm-th power - see next item). 
-   * norm is a real number >= 1  - the norm the function will use. The default is Euclidean (i.e. norm = 2), no need to specify it if you are happy with Euclidean. Playing with this didn't seem that helpful to me, but it was cost-free to implement.
-   * solver is the type of cvx solver the function will use - you can see the instructions at cvxpy.org if you want to play with this
-   * verbose is either False (default) or True -  True will get you more feedback from the solver - again details at cvxpy.org 
+   * data_file              is the name of the source input file (file CSV format)
+   * target_file            is the name of the target file (file CSV format)
+   * results_file_prefix    is an optional name for a prefix for your results file
+   * dec_pl                 is a positive integer number (or 0) for the number of decimal places you want for the results that will be saved
+   * distances              is either True (default) or False: whether or not to include in the results the distance between the target vector and the weighted collection of source vectors (raised to the norm-th power - see next item). 
+   * norm                   is a real number >= 1  - the norm the function will use. The default is Euclidean (i.e. norm = 2), no need to specify it if you are happy with Euclidean. Playing with this didn't seem that helpful to me, but it was cost-free to implement.
+   * solver                 is the type of cvx solver the function will use - you can see the instructions at cvxpy.org if you want to play with this
+   * verbose                is either False (default) or True -  True will get you more feedback from the solver - again details at cvxpy.org 
    
    Examples:
    
    cvx_mix('C:/mydir/source.csv', 'C:/mydir/target.csv'
    cvx_mix(data_file = working_dir + 'source.csv', target_file = working_dir + 'target.csv', result_file_prefix = working_dir + 'results_', dec_pl = 3, distances = True, norm = 2, solver='ECOS', verbose = False)
 
-3.  The input file, and target file can be directly created from spreadsheets 
+3. The input file, and target file can be directly created from spreadsheets 
   saved in CSV format, and the output file which is in CSV format can be 
   direct imported into a spreadsheet.
 
