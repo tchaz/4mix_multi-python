@@ -14,17 +14,28 @@ STRONGLY ADVISED: Use cvx_mix instead of this script. It is MUCH FASTER (and mor
 
 1. Make sure you are in the directory with the n_mix_multi.py file (or edit the file to change the default working directory).
    Make sure you have write privileges for that directory (ie that you can create a file there) in order to be able to write the results file.
-   Run the script 4mix_multi.py under python 3. (Tested under python 3.4.)
+   Run the script n_mix_multi.py under python 3. (Tested under python 3.4.)
    
 
-2. To run the script, there are seven arguments (the last optional). You write:
+2. To run the script, there are up to four arguments (the last optional, you'll want to use the first three - though these are optional in the sense that the function will try some default values). 
+
+    Examples: You write:
+
+    > get_mix(pop_names, 'C:/mydir/K8avg.csv', 'C:/mydir/target.csv')
+    
+    or 
+    
+    > get_mix(pop_names, input_file = working_dir + 'K8avg.csv', target_file = working_dir + 'target.csv', result_file_prefix = working_dir + 'results_')
+
    "get_mix(pop_names, input_file = working_dir + 'K8avg.csv', target_file = working_dir + 'target.csv', result_file_prefix = working_dir + 'results_')"
    
    pop_names should be a list - a collection of names given in quotes, separated by commas and enclosed in square brackets
    
    E.G. ['Azeri_Dagestan', 'Baalberge_MN', 'Balkar', 'Bashkir', 'Basque_French', 'Bedouin','Bell_Beaker_LN']
    
-   The pop_names list can be any length up to 10. As the length increases so does the granularity of the results. 
+   The pop_names list can be any length up to 10. 
+   
+   As the length increases so does the granularity of the results. 
    So for lists of length 4 or 5 the results give weights in increments of 1%, for length 6 in increments of 1.25%,
    length 7 increments of 2%, length 8 increments of 3% and length 9 or 10 increments of 5%.
    
@@ -34,13 +45,14 @@ STRONGLY ADVISED: Use cvx_mix instead of this script. It is MUCH FASTER (and mor
    [On the never to be done to-do list is refining the granularity by searching with a finer sieve around the initial solution for 
    longer pop_names lists. As cvx_mix is ***SO*** much fast this is unlikely to be implemented.]
    
-   input file  = input file name (file CSV format)
-   target file = target file name (file in CSV format)
+   pop_names = list of source population names (list)
+   input_file  = input file name (file CSV format)
+   target_file = target file name (file in CSV format)
    
    optional: output filename prefix (output file will in CSV format) 
-             the script tries to make a sensible filename containing the target populations
+             the script tries to make a sensible filename tagged by generation time
              - you can add things to that name here 
-             (or edit the script if, for example, you don't want the target pop names)
+               (or edit the script if, for example, you don't want the time)
 
 
 3. After it finishes running (perhaps half a second for a target list of length ~200 and a list of 4 populations), 
