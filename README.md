@@ -1,4 +1,3 @@
-
 4mix_multi in python 3.
 
 Credits: (lifted from 4mix_multi.R:) CC BY-NC-SA original code by Eurogenes DESEUK1, modified by AJ14, 
