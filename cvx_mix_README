@@ -26,7 +26,7 @@ I had to resort to getting the whl files for cvxpy and cvxCANNON from  Christoph
    * target_file            is the name of the target file (file CSV format)
    * results_file_prefix    is an optional name for a prefix for your results file
    * dec_pl                 is a positive integer number (or 0) for the number of decimal places you want for the results that will be saved
-   * distances              is either True (default) or False: whether or not to include in the results the distance between the target vector and the weighted collection of source vectors (raised to the norm-th power - see next item). 
+   * distances              is either True (default) or False: whether or not to include in the results the distance between the target vector and the weighted collection of source vectors. 
    * norm                   is a real number >= 1  - the norm the function will use. The default is Euclidean (i.e. norm = 2), no need to specify it if you are happy with Euclidean. Playing with this didn't seem that helpful to me, but it was cost-free to implement.
    * solver                 is the type of cvx solver the function will use - you can see the instructions at cvxpy.org if you want to play with this
    * verbose                is either False (default) or True -  True will get you more feedback from the solver - again details at cvxpy.org 
