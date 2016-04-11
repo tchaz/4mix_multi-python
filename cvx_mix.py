@@ -37,13 +37,13 @@ def cvx_mix(data_file = working_dir + 'source.csv', target_file = working_dir + 
     
         prob = cvx.Problem(objective, constraints)
     
-        min_dist_sq = prob.solve(solver=solver, verbose=verbose)
+        min_dist = np.power(prob.solve(solver=solver, verbose=verbose),1/p)
         
         y = 100 * x
         
         # our list comprehension should really be over x.value.shape[0], but this is always just equal to A.shape[1] = len(pop_names) = num_src_pops
         
-        results_table.append([target_df.values[tr][0]] + [dec_places % (y.value[i][0,0]) for i in range(num_src_pops)] + ['%.6f' % min_dist_sq])
+        results_table.append([target_df.values[tr][0]] + [dec_places % (y.value[i][0,0]) for i in range(num_src_pops)] + ['%.6f' % min_dist])
                
     # write results_file
     result_file_suffix = time.strftime("%d-%m-%y_%H-%M-%S", time.gmtime()) 
