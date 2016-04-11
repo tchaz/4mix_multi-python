@@ -37,7 +37,16 @@ def cvx_mix(data_file = working_dir + 'source.csv', target_file = working_dir + 
     
         prob = cvx.Problem(objective, constraints)
     
-        min_dist = np.power(prob.solve(solver=solver, verbose=verbose),1/p)
+        min_dist_to_p = prob.solve(solver=solver, verbose=verbose)
+        
+        # work around for floating point errors for tiny distances giving negative sum of squares
+        
+        if min_dist_to_p >= 0:
+            pass
+        else:
+            min_dist_to_p = cvx.sum_entries(cvx.power((A*x - b),p)).value
+        
+        min_dist = np.power(min_dist_to_p,1/p)
         
         y = 100 * x
         
